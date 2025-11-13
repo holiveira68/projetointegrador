@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz: Aquecimento Global</title>
+ <link rel="stylesheet" href="css/quiz4.css">
+ 
+</head>
+<body>
+  <section class="quiz-header" id="header">
+    <div class="header-top" id="header-top">
+      <h1>E C O L E A R N I N G . C O M</h1>
+    </div>
+  
+  <div class="quiz-container">
+    <h1>Quiz: Aquecimento Global</h1>
+    <div id="quiz"></div>
+    <button id="next-btn">Próxima</button>
+    <div class="result" id="result"></div>
+  </div>
+  </section>
+  <script>
+    const quizData = [
+      {
+        question: "O que é o aquecimento global?",
+        options: [
+          "O resfriamento natural da Terra.",
+          "O aumento da temperatura média do planeta devido à ação humana.",
+          "A variação normal do clima entre as estações.",
+          "A diminuição do efeito estufa natural."
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual é a principal causa do aquecimento global?",
+        options: [
+          "Queima de combustíveis fósseis e desmatamento.",
+          "Aumento das chuvas.",
+          "Redução de gases do efeito estufa.",
+          "Rotação da Terra."
+        ],
+        answer: 0
+      },
+      {
+        question: "O principal gás responsável pelo efeito estufa é:",
+        options: [
+          "Oxigênio (O₂).",
+          "Nitrogênio (N₂).",
+          "Dióxido de carbono (CO₂).",
+          "Hidrogênio (H₂)."
+        ],
+        answer: 2
+      },
+      {
+        question: "O efeito estufa é:",
+        options: [
+          "Um fenômeno natural e essencial à vida, mas intensificado pela ação humana.",
+          "Um processo totalmente artificial.",
+          "Algo que não afeta o clima.",
+          "Um fenômeno que esfria o planeta."
+        ],
+        answer: 0
+      },
+      {
+        question: "Uma das consequências do aquecimento global é:",
+        options: [
+          "Diminuição do nível dos mares.",
+          "Aumento de secas e derretimento das geleiras.",
+          "Redução das temperaturas médias.",
+          "Maior fertilidade do solo."
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual dessas ações ajuda a combater o aquecimento global?",
+        options: [
+          "Aumentar o uso de combustíveis fósseis.",
+          "Desmatar florestas tropicais.",
+          "Utilizar energia limpa e reflorestar áreas degradadas.",
+          "Produzir mais lixo."
+        ],
+        answer: 2
+      },
+      {
+        question: "O Protocolo de Quioto e o Acordo de Paris são exemplos de:",
+        options: [
+          "Tratados internacionais para reduzir a emissão de gases poluentes.",
+          "Campanhas publicitárias sobre reciclagem.",
+          "Eventos culturais sobre sustentabilidade.",
+          "Programas locais de energia elétrica."
+        ],
+        answer: 0
+      }
+    ];
+
+    const quiz = document.getElementById('quiz');
+    const nextBtn = document.getElementById('next-btn');
+    const result = document.getElementById('result');
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+      const currentQuiz = quizData[currentQuestion];
+      quiz.innerHTML = `
+        <div class='question'>${currentQuiz.question}</div>
+        <div class='options'>
+          ${currentQuiz.options
+            .map(
+              (option, index) => `
+              <label>
+                <input type='radio' name='answer' value='${index}'>
+                ${option}
+              </label>`
+            )
+            .join('')}
+        </div>
+        <div class='feedback' id='feedback'></div>
+      `;
+      answered = false;
+    }
+
+    function checkAnswer(selectedOption) {
+      const correctAnswer = quizData[currentQuestion].answer;
+      const options = quiz.querySelectorAll('label');
+      const feedback = document.getElementById('feedback');
+
+      options.forEach((option, index) => {
+        option.classList.remove('correct', 'incorrect');
+        if (index === correctAnswer) option.classList.add('correct');
+      });
+
+      if (parseInt(selectedOption.value) === correctAnswer) {
+        score++;
+        feedback.textContent = "✅ Resposta correta!";
+        feedback.style.color = "#A5D6A7";
+      } else {
+        feedback.textContent = "❌ Resposta incorreta!";
+        feedback.style.color = "#FFCDD2";
+        options[selectedOption.value].classList.add('incorrect');
+      }
+
+      answered = true;
+    }
+
+    quiz.addEventListener('change', (e) => {
+      if (e.target.name === 'answer' && !answered) {
+        checkAnswer(e.target);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (!answered) {
+        alert('Escolha uma resposta antes de continuar.');
+        return;
+      }
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      quiz.innerHTML = '';
+      nextBtn.style.display = 'none';
+      result.textContent = `Você acertou ${score} de ${quizData.length} perguntas! 🌍🔥`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

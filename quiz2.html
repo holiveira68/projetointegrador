@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz: Energias Renováveis</title>
+  <link rel="stylesheet" href="css/quiz2.css">
+</head>
+<body>
+  <section class="quiz-header" id="header">
+    <div class="header-top" id="header-top">
+      <h1>E C O L E A R N I N G . C O M</h1>
+    </div>
+  
+  <div class="quiz-container">
+    <h1>Quiz: Energias Renováveis</h1>
+    <div id="quiz"></div>
+    <button id="next-btn">Próxima</button>
+    <div class="result" id="result"></div>
+  </div>
+  </section>
+  <script>
+    const quizData = [
+      {
+        question: "O que são energias renováveis?",
+        options: [
+          "Fontes de energia que se esgotam rapidamente.",
+          "Fontes que se regeneram naturalmente e não se esgotam.",
+          "Fontes obtidas apenas do carvão mineral.",
+          "Fontes que não geram eletricidade."
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual das opções é uma fonte de energia renovável?",
+        options: [
+          "Petróleo.",
+          "Carvão mineral.",
+          "Energia solar.",
+          "Gás natural."
+        ],
+        answer: 2
+      },
+      {
+        question: "A energia eólica é gerada por meio de:",
+        options: [
+          "Movimento das águas dos rios.",
+          "Queima de combustíveis fósseis.",
+          "Movimento do vento sobre turbinas.",
+          "Radiação solar direta."
+        ],
+        answer: 2
+      },
+      {
+        question: "Qual é uma vantagem das energias renováveis?",
+        options: [
+          "Aumentam a poluição do ar.",
+          "São inesgotáveis e menos poluentes.",
+          "Dependem exclusivamente de petróleo.",
+          "Causam grandes impactos ambientais."
+        ],
+        answer: 1
+      },
+      {
+        question: "A energia solar fotovoltaica transforma:",
+        options: [
+          "Calor em energia mecânica.",
+          "Luz solar em energia elétrica.",
+          "Vento em energia térmica.",
+          "Água em energia química."
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual dessas é uma desvantagem das energias renováveis?",
+        options: [
+          "Baixa emissão de poluentes.",
+          "Custo inicial de instalação mais alto.",
+          "Fonte de energia infinita.",
+          "Fácil armazenamento de energia."
+        ],
+        answer: 1
+      },
+      {
+        question: "A energia gerada pelo movimento das águas é chamada de:",
+        options: [
+          "Energia nuclear.",
+          "Energia eólica.",
+          "Energia hidrelétrica.",
+          "Energia solar térmica."
+        ],
+        answer: 2
+      }
+    ];
+
+    const quiz = document.getElementById('quiz');
+    const nextBtn = document.getElementById('next-btn');
+    const result = document.getElementById('result');
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+      const currentQuiz = quizData[currentQuestion];
+      quiz.innerHTML = `
+        <div class='question'>${currentQuiz.question}</div>
+        <div class='options'>
+          ${currentQuiz.options
+            .map(
+              (option, index) => `
+              <label>
+                <input type='radio' name='answer' value='${index}'>
+                ${option}
+              </label>`
+            )
+            .join('')}
+        </div>
+        <div class='feedback' id='feedback'></div>
+      `;
+      answered = false;
+    }
+
+    function checkAnswer(selectedOption) {
+      const correctAnswer = quizData[currentQuestion].answer;
+      const options = quiz.querySelectorAll('label');
+      const feedback = document.getElementById('feedback');
+
+      options.forEach((option, index) => {
+        option.classList.remove('correct', 'incorrect');
+        if (index === correctAnswer) option.classList.add('correct');
+      });
+
+      if (parseInt(selectedOption.value) === correctAnswer) {
+        score++;
+        feedback.textContent = "✅ Resposta correta!";
+        feedback.style.color = "#A5D6A7";
+      } else {
+        feedback.textContent = "❌ Resposta incorreta!";
+        feedback.style.color = "#FFCDD2";
+        options[selectedOption.value].classList.add('incorrect');
+      }
+
+      answered = true;
+    }
+
+    quiz.addEventListener('change', (e) => {
+      if (e.target.name === 'answer' && !answered) {
+        checkAnswer(e.target);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (!answered) {
+        alert('Escolha uma resposta antes de continuar.');
+        return;
+      }
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      quiz.innerHTML = '';
+      nextBtn.style.display = 'none';
+      result.textContent = `Você acertou ${score} de ${quizData.length} perguntas! ⚡🌿`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz: Biodiversidade</title>
+ <link rel="stylesheet" href="css/quiz1.css">
+</head>
+<body>
+  <section class="quiz-header">
+    <div class="header-top" id="header-top">
+      <h1>E C O L E A R N I N G . C O M</h1>
+    </div>
+  
+
+  <div class="quiz-container">
+    <h1>Quiz: Biodiversidade</h1>
+    <div id="quiz"></div>
+    <button id="next-btn">Próxima</button>
+    <div class="result" id="result"></div>
+  </div>
+  </section>
+
+  <script>
+    const quizData = [
+      {
+        question: "O que é biodiversidade?",
+        options: [
+          "A variedade de espécies de seres vivos em um ambiente.",
+          "A presença de apenas uma espécie dominante.",
+          "O número de seres humanos em uma região.",
+          "A quantidade de poluição em um ecossistema."
+        ],
+        answer: 0
+      },
+      {
+        question: "Qual é a principal causa da perda de biodiversidade?",
+        options: [
+          "A conservação de áreas verdes.",
+          "O desmatamento e destruição de habitats.",
+          "O plantio de árvores nativas.",
+          "A criação de reservas naturais."
+        ],
+        answer: 1
+      },
+      {
+        question: "O que é uma espécie endêmica?",
+        options: [
+          "Espécie encontrada em todo o mundo.",
+          "Espécie que vive apenas em uma região específica.",
+          "Espécie invasora em um novo ambiente.",
+          "Espécie migratória sazonal."
+        ],
+        answer: 1
+      },
+      {
+        question: "A perda de biodiversidade afeta:",
+        options: [
+          "Somente os animais de grande porte.",
+          "Apenas o clima local.",
+          "O equilíbrio dos ecossistemas e a sobrevivência humana.",
+          "Nenhum aspecto relevante."
+        ],
+        answer: 2
+      },
+      {
+        question: "Qual ação ajuda a conservar a biodiversidade?",
+        options: [
+          "Desmatamento controlado.",
+          "Caça esportiva.",
+          "Preservação de florestas e uso sustentável dos recursos.",
+          "Poluição dos rios."
+        ],
+        answer: 2
+      },
+      {
+        question: "O que é um hotspot de biodiversidade?",
+        options: [
+          "Região com poucas espécies.",
+          "Área com grande diversidade e ameaçada de destruição.",
+          "Local sem vegetação.",
+          "Zona desértica."
+        ],
+        answer: 1
+      },
+      {
+        question: "Por que a biodiversidade é importante?",
+        options: [
+          "Porque aumenta a poluição.",
+          "Porque fornece recursos naturais e equilíbrio ecológico.",
+          "Porque reduz o oxigênio.",
+          "Porque elimina espécies predadoras."
+        ],
+        answer: 1
+      }
+    ];
+
+    const quiz = document.getElementById('quiz');
+    const nextBtn = document.getElementById('next-btn');
+    const result = document.getElementById('result');
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+      const currentQuiz = quizData[currentQuestion];
+      quiz.innerHTML = `
+        <div class='question'>${currentQuiz.question}</div>
+        <div class='options'>
+          ${currentQuiz.options
+            .map(
+              (option, index) => `
+              <label>
+                <input type='radio' name='answer' value='${index}'>
+                ${option}
+              </label>`
+            )
+            .join('')}
+        </div>
+        <div class='feedback' id='feedback'></div>
+      `;
+      answered = false;
+    }
+
+    function checkAnswer(selectedOption) {
+      const correctAnswer = quizData[currentQuestion].answer;
+      const options = quiz.querySelectorAll('label');
+      const feedback = document.getElementById('feedback');
+
+      options.forEach((option, index) => {
+        option.classList.remove('correct', 'incorrect');
+        if (index === correctAnswer) option.classList.add('correct');
+      });
+
+      if (parseInt(selectedOption.value) === correctAnswer) {
+        score++;
+        feedback.textContent = "✅ Resposta correta!";
+        feedback.style.color = "#A5D6A7";
+      } else {
+        feedback.textContent = "❌ Resposta incorreta!";
+        feedback.style.color = "#FFCDD2";
+        options[selectedOption.value].classList.add('incorrect');
+      }
+
+      answered = true;
+    }
+
+    quiz.addEventListener('change', (e) => {
+      if (e.target.name === 'answer' && !answered) {
+        checkAnswer(e.target);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (!answered) {
+        alert('Escolha uma resposta antes de continuar.');
+        return;
+      }
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      quiz.innerHTML = '';
+      nextBtn.style.display = 'none';
+      result.textContent = `Você acertou ${score} de ${quizData.length} perguntas! 🌿`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
