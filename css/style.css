@@ -8,7 +8,7 @@
 :root {
   --verde-escuro: #5da06a;
   --verde-claro: #bfe9d2;
-  --texto-titulo: #123c23;
+  --texto-titulo: #f7f8f8;
   --borda: rgba(0, 0, 0, 0.1);
   --sombra-card: 0 6px 12px rgba(0, 0, 0, 0.15);
   --fonte-principal: "Arial", sans-serif;
@@ -538,6 +538,7 @@ footer p {
   border: 0;
   border-top: 2px solid #1a1a1a;
   margin-bottom: 25px;
+  
 }
 
 
