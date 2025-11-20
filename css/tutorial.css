@@ -1,12 +1,4 @@
-:root {
-    --verde: #2e8b57;
-    --verde-escuro: #1f5f3c;
-    --fundo: #f5fff8;
-    --texto: #2f2f2f;
-    --radius: 16px;
-    --sombra: 0 4px 18px rgba(0, 0, 0, 0.1);
-  }
-  
+
   * {
     margin: 0;
     padding: 0;
@@ -14,13 +6,14 @@
   }
   
   body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-weight: bold;
     background-color: var(--fundo);
     color: var(--texto);
-    line-height: 1.7;
+    /*line-height: 1.7;*/
   }
   
-  header {
+  #header_tut {
+    font-family: var(--fonte-principal);
     background: linear-gradient(90deg, var(--verde), #3cb371);
     color: white;
     text-align: center;
@@ -28,22 +21,23 @@
     clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
   }
   
-  header h1 {
+  #header_tut h1 {
     font-size: 2.6em;
     margin-bottom: 8px;
   }
   
-  header p {
+  #header_tut p {
     font-size: 1.1em;
     opacity: 0.9;
   }
   
-  nav {
+  #nav_tut {
+    font-family: var(--fonte-principal);
     background-color: var(--verde-escuro);
     text-align: center;
   }
   
-  nav a {
+  #nav_tut a {
     color: white;
     text-decoration: none;
     padding: 15px 20px;
@@ -51,7 +45,7 @@
     transition: background 0.3s;
   }
   
-  nav a:hover {
+  #nav_tut a:hover {
     background-color: #184d2f;
   }
   

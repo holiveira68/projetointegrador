@@ -1,4 +1,5 @@
 :root {
+  --verde: #2e8b57;
   --verde-escuro: #5da06a;
   --verde-claro: #bfe9d2;
   --texto-titulo: #f7f8f8;
@@ -6,4 +7,8 @@
   --sombra-card: 0 6px 12px rgba(0, 0, 0, 0.15);
   --fonte-principal: "Arial", sans-serif;
   --verde-forte: #0b350e;
+   --fundo: #c2f1c2;
+    --texto: #2f2f2f;
+    --radius: 16px;
+    --sombra: 0 4px 18px rgba(0, 0, 0, 0.1);
 }
