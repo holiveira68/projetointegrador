@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz: Reciclagem</title>
+ <link rel="stylesheet" href="css/quiz3.css">
+ 
+</head>
+<body>
+  <section class="quiz-header" id="header">
+    <div class="header-top" id="header-top">
+      <h1>E C O L E A R N I N G . C O M</h1>
+    </div>
+  
+  <div class="quiz-container">
+    <h1>Quiz: Reciclagem</h1>
+    <div id="quiz"></div>
+    <button id="next-btn">Próxima</button>
+    <div class="result" id="result"></div>
+  </div>
+</section>
+
+  <script>
+    const quizData = [
+      {
+        question: "O que significa reciclar?",
+        options: [
+          "Queimar o lixo para reduzir o volume.",
+          "Reutilizar materiais para criar novos produtos.",
+          "Descartar resíduos no lixo comum.",
+          "Guardar o lixo para coleta."
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual a cor da lixeira destinada ao papel?",
+        options: [
+          "Amarela.",
+          "Verde.",
+          "Azul.",
+          "Vermelha."
+        ],
+        answer: 2
+      },
+      {
+        question: "A lixeira verde é usada para:",
+        options: [
+          "Vidros.",
+          "Metais.",
+          "Plásticos.",
+          "Papéis."
+        ],
+        answer: 0
+      },
+      {
+        question: "O símbolo internacional da reciclagem é formado por:",
+        options: [
+          "Um círculo azul.",
+          "Três setas formando um triângulo.",
+          "Uma folha verde.",
+          "Um raio amarelo."
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual material é reciclável?",
+        options: [
+          "Plástico PET.",
+          "Pilhas e baterias.",
+          "Papel higiênico usado.",
+          "Lâmpadas queimadas."
+        ],
+        answer: 0
+      },
+      {
+        question: "O que é coleta seletiva?",
+        options: [
+          "Separação de resíduos conforme o tipo de material.",
+          "Mistura de todo o lixo em um único recipiente.",
+          "Descarte de lixo eletrônico.",
+          "Apenas recolhimento de resíduos orgânicos."
+        ],
+        answer: 0
+      },
+      {
+        question: "Qual é um benefício da reciclagem?",
+        options: [
+          "Aumentar o volume de lixo nos aterros.",
+          "Economizar recursos naturais e energia.",
+          "Poluir rios e mares.",
+          "Gerar mais resíduos tóxicos."
+        ],
+        answer: 1
+      }
+    ];
+
+    const quiz = document.getElementById('quiz');
+    const nextBtn = document.getElementById('next-btn');
+    const result = document.getElementById('result');
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function loadQuestion() {
+      const currentQuiz = quizData[currentQuestion];
+      quiz.innerHTML = `
+        <div class='question'>${currentQuiz.question}</div>
+        <div class='options'>
+          ${currentQuiz.options
+            .map(
+              (option, index) => `
+              <label>
+                <input type='radio' name='answer' value='${index}'>
+                ${option}
+              </label>`
+            )
+            .join('')}
+        </div>
+        <div class='feedback' id='feedback'></div>
+      `;
+      answered = false;
+    }
+
+    function checkAnswer(selectedOption) {
+      const correctAnswer = quizData[currentQuestion].answer;
+      const options = quiz.querySelectorAll('label');
+      const feedback = document.getElementById('feedback');
+
+      options.forEach((option, index) => {
+        option.classList.remove('correct', 'incorrect');
+        if (index === correctAnswer) option.classList.add('correct');
+      });
+
+      if (parseInt(selectedOption.value) === correctAnswer) {
+        score++;
+        feedback.textContent = "✅ Resposta correta!";
+        feedback.style.color = "#A5D6A7";
+      } else {
+        feedback.textContent = "❌ Resposta incorreta!";
+        feedback.style.color = "#FFCDD2";
+        options[selectedOption.value].classList.add('incorrect');
+      }
+
+      answered = true;
+    }
+
+    quiz.addEventListener('change', (e) => {
+      if (e.target.name === 'answer' && !answered) {
+        checkAnswer(e.target);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (!answered) {
+        alert('Escolha uma resposta antes de continuar.');
+        return;
+      }
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      quiz.innerHTML = '';
+      nextBtn.style.display = 'none';
+      result.textContent = `Você acertou ${score} de ${quizData.length} perguntas! ♻️🌿`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
