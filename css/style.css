@@ -627,6 +627,7 @@ footer p {
   align-items: center;
   justify-content: center;
   margin-bottom: 60px;
+  padding: 10px;
   }
 .banner video {
   position: absolute;

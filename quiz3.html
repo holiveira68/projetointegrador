@@ -4,15 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz: Reciclagem</title>
- <link rel="stylesheet" href="css/quiz3.css">
+ <link rel="stylesheet" href="css/quiz.css">
+ <link rel="stylesheet" href="css/headerfooter.css">
+ <link rel="stylesheet" href="css/variaveis.css">
  
 </head>
 <body>
-  <section class="quiz-header" id="header">
-    <div class="header-top" id="header-top">
-      <h1>E C O L E A R N I N G . C O M</h1>
-    </div>
-  
+  <header class="site-header" id="header">
+      <div class="header-top" id="header-top">
+        <h1>E C O L E A R N I N G . C O M</h1>
+      </div>
+
+      <nav class="navbar">
+        <div class="nav-logo">
+          <img src="img/logoprojeto.jpg" alt="Logo Ecolearning" />
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Quiz</a></li>
+          <li><a href="#">Vídeos aulas</a></li>
+          <li><a href="#">Tutoriais</a></li>
+          <li><a href="#">Links úteis</a></li>
+        </ul>
+
+        <div class="search">
+          <img src="img/lupa.png" alt="Ícone de lupa" class="icon-lupa">
+          <input type="text" placeholder=" Pesquisar...">
+        </div>
+      
+      </nav>
+    </header>
+
+
   <div class="quiz-container">
     <h1>Quiz: Reciclagem</h1>
     <div id="quiz"></div>
@@ -173,5 +197,18 @@
 
     loadQuestion();
   </script>
+  <footer>
+      <div class="footer-content">
+        <h3>Nos siga</h3>
+        <div class="social-icons">
+          <img src="img/facebook.png" alt="facebook" class="icon-facebook">
+          <img src="img/instagram.png" alt="instagram" class="icon-instagram">
+          <img src="img/twitter.png" alt="twitter" class="icon-twitter">
+          <img src="img/whatsapp.png" alt="whastapp" class="icon-whastapp">
+          
+        <p>© Grupo Eco - 2025 - Todos os direitos reservados</p>
+      </div>
+      </div>
+    </footer>
 </body>
 </html>

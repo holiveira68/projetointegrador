@@ -1,0 +1,9 @@
+:root {
+  --verde-escuro: #5da06a;
+  --verde-claro: #bfe9d2;
+  --texto-titulo: #f7f8f8;
+  --borda: rgba(0, 0, 0, 0.1);
+  --sombra-card: 0 6px 12px rgba(0, 0, 0, 0.15);
+  --fonte-principal: "Arial", sans-serif;
+  --verde-forte: #0b350e;
+}
