@@ -70,13 +70,6 @@
   color: #a9e4a6;
 }
 
-/*.search-box input {
-  padding: 6px 10px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-}*/
-
 .search {
   display: flex;
   align-items: center;
@@ -112,6 +105,45 @@
 
 .icon-lupa:hover {
   transform: scale(1.1);
+}
+
+/* Mobile */
+.navbar_toggle {
+    font-size: 2rem;
+    border: none;
+    background: none;
+    color: rgb(21, 230, 83);
+    cursor: pointer;
+    transition: 0.3s;
+    display: none;
+
+}
+
+.navbar_toggle ion-icon:hover {
+    color: white;
+}
+
+#mobileMenu {
+    position: absolute;
+    top: 135px;
+    right: 20px;
+    width: 150px;
+    background: rgb(41, 105, 39);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 1.2rem 1rem;
+    opacity: 0;
+
+}
+
+/* Quando o JavaScript ativar */
+#mobileMenu.active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 footer {
@@ -158,3 +190,93 @@ footer p {
   color: #ccc;
   margin-top: 10px;
 }
+
+/* ========================= 
+      RESPONSIVIDADE 
+ Links Navegação e Quiz
+============================ */
+@media (max-width: 1024px) {
+  .nav-links a {
+    font-weight: 300;
+    align-items: center;
+  }
+   
+ .search {
+  width: 150px;
+ }
+  .header-top h1 {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+  }
+
+  .nav-logo img {
+    width: 70px;
+    height: 70px;
+  }
+  
+ 
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .search {
+    display: none;
+  }
+ 
+  .header-top h1 {
+    font-size: 1rem;
+    letter-spacing: 4px;
+  }
+
+ .navbar_toggle {
+        display: block;
+        font-size: 3rem;
+        z-index: 10;
+     }
+  .nav-logo img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .social-icons img{
+  width: 35px;
+  height: 35px;
+}
+
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+  .nav-links {
+    display: none;
+  }
+  .search {
+    display: none;
+  }
+ 
+  .header-top h1 {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+  }
+
+  .navbar_toggle {
+        display: block;
+        font-size: 3rem;
+        z-index: 10;
+     }
+ .nav-logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icons img{
+  width: 25px;
+  height: 25px;
+}
+
+}
+
+
+
