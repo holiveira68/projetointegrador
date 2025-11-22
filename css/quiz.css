@@ -92,3 +92,39 @@ body {
       text-align: center;
       font-weight: bold;
     }
+
+@media (max-width: 768px) {
+  .quiz-container {
+    max-width: 425px;
+    margin-left: 15%;
+  }     
+  .question {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .result {
+    font-size: 14px;
+  }
+  .options {
+    font-size: 12px;
+  }
+  }
+    
+
+    @media (max-width: 480px) {
+
+      .quiz-container {
+    max-width: 325px;
+    margin-left: 10%;
+  }     
+  .question {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+  .result {
+    font-size: 11px;
+  }
+  .options {
+    font-size: 10px;
+  }
+    }

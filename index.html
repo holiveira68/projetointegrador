@@ -17,8 +17,17 @@
         <div class="nav-logo">
           <img src="img/logoprojeto.jpg" alt="Logo Ecolearning" />
         </div>
-
+        <!-- Menu Desktop - Links de navegação -->
         <ul class="nav-links">
+          <li><a href="#banner-principal">Home</a></li>
+          <li><a href="#quiz">Quiz</a></li>
+          <li><a href="#video-aulas">Vídeos aulas</a></li>
+          <li><a href="#tutorial">Tutoriais</a></li>
+          <li><a href="#links">Links úteis</a></li>
+        </ul>
+
+        <!-- Menu Mobile - Links de navegação -->
+         <ul class="nav-links" id="mobileMenu">
           <li><a href="#banner-principal">Home</a></li>
           <li><a href="#quiz">Quiz</a></li>
           <li><a href="#video-aulas">Vídeos aulas</a></li>
@@ -30,6 +39,14 @@
           <img src="img/lupa.png" alt="Ícone de lupa" class="icon-lupa">
           <input type="text" placeholder=" Pesquisar...">
         </div>
+
+        <!-- Botao mobile -->
+          <button class="navbar_toggle"
+                  aria-label="Menu Mobile"> 
+                  <!-- Para software de deficientes visuais lê e joga no audio, o que está no aria-label-->
+
+                  <ion-icon name="reorder-three-outline"></ion-icon>  
+          </button>
       
       </nav>
     </header>
@@ -106,7 +123,7 @@
             <a
               href="https://youtu.be/OQ5jpiKzNqg?si=JLVbrml90KtUKBSL"
               target="_blank"
-              ><img src="img/reciclagem.jpg" alt="Vídeo aula 3" />Aula 3</a
+              ><img src="img/reciclagem.jpg" alt="Vídeo aula 3" /></a
             >
             <div class="vd-texto">Reciclagem</div>
           </div>
@@ -114,7 +131,7 @@
             <a
               href="https://youtu.be/bMlrU9SxEj0?si=FJtt3HTubRZZTB4-"
               target="_blank"
-              ><img src="img/poluicao.jpg" alt="Vídeo aula 4" />Aula 4</a
+              ><img src="img/poluicao.jpg" alt="Vídeo aula 4" /></a
             >
             <div class="vd-texto">Aquecimento Global</div>
           </div>
@@ -280,5 +297,13 @@
       </div>
       </div>
     </footer>
+
+    <!-- Ionic -->
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>  
+
+    <!-- Chamada do HTML-->
+      <script src="js/script.js"></script>
+
   </body>
 </html>

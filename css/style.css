@@ -49,13 +49,6 @@ section  {
   z-index: 1000;
 }
 
-/*.header-top{
-    position: sticky;
-    top: 0px;
-    background-color: white;
-    z-index: 1;
-}*/
-
 
 .navbar {
   background-color: #0b2e12;
@@ -89,12 +82,6 @@ section  {
   color: #a9e4a6;
 }
 
-/*.search-box input {
-  padding: 6px 10px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-}*/
 
 .search {
   display: flex;
@@ -131,6 +118,45 @@ section  {
 
 .icon-lupa:hover {
   transform: scale(1.1);
+}
+
+/* Mobile */
+.navbar_toggle {
+    font-size: 2rem;
+    border: none;
+    background: none;
+    color: rgb(21, 230, 83);
+    cursor: pointer;
+    transition: 0.3s;
+    display: none;
+
+}
+
+.navbar_toggle ion-icon:hover {
+    color: white;
+}
+
+#mobileMenu {
+    position: absolute;
+    top: 105px;
+    right: 20px;
+    width: 150px;
+    background: rgb(41, 105, 39);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 1.2rem 1rem;
+    opacity: 0;
+
+}
+
+/* Quando o JavaScript ativar */
+#mobileMenu.active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ====== SEÇÃO QUIZ ====== */
@@ -198,19 +224,6 @@ section  {
 .textos:hover .quiz-texto {
   opacity: 1;
 }
-/*.quiz-images img {
-  width: 380px;
-  height: 340px;
-  object-fit: cover;
-  border-radius: 30px 0px 30px 0px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-}*/
-
-/*.quiz-images img:hover {
-  transform: scale(1.05);
-
-}*/
 
 
 .card-quiz {
@@ -250,29 +263,6 @@ section  {
   transform: translateY(-5px);
   box-shadow: 4px 4px 10px 3px rgba(43, 16, 16, 0.6);
   border-radius: 30px 0 30px 0 ;
-}
-
-/* ====== RESPONSIVIDADE ====== */
-@media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .quiz-images img {
-    width: 45%;
-  }
-}
-
-@media (max-width: 480px) {
-  .quiz-images img {
-    width: 80%;
-  }
-
-  .header-top {
-    font-size: 1.1rem;
-    letter-spacing: 4px;
-  }
 }
 
 /* Mayara */
@@ -393,18 +383,6 @@ footer p {
 
 
 /* ===============================
-   ESTILO GERAL
-   =============================== */
-
-/*body {
-  font-family: var(--fonte-principal);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-}*/
-
-/* ===============================
    SEÇÃO DE VÍDEOS
    =============================== */
 .videos {
@@ -494,27 +472,6 @@ footer p {
 
 .video-card:hover .vd-texto {
   opacity: 1;
-}
-
-/* ===============================
-   RESPONSIVIDADE
-   =============================== */
-@media (max-width: 768px) {
-  .container-videos {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .video-card {
-    max-width: 45%;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .video-card {
-    max-width: 100%;
-  }
 }
 
 /* Laura 
@@ -607,17 +564,6 @@ footer p {
   color: white;
 }
 
-
-@keyframes slide-up {
-  0% {
-       transform: translateY(50px);
-       opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 
 /* Banner */
 .banner {
@@ -741,5 +687,183 @@ footer p {
   border-bottom-right-radius: 40px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   display: block;
+}
+
+/* ========================= 
+      RESPONSIVIDADE 
+ Links Navegação e Quiz
+============================ */
+@media (max-width: 1024px) {
+  .nav-links a {
+    font-weight: 300;
+    align-items: center;
+  }
+  .quiz-images img {
+    max-width: 65%;
+    max-height: 65%;
+    margin-bottom: 20px;
+  }
+  
+ .search {
+  width: 150px;
+ }
+  .header-top {
+    font-size: 1rem;
+    letter-spacing: 4px;
+  }
+
+  .banner video {
+    width: 100%;
+    height: 40vh;
+  }
+
+    .banner-texto  h1 {
+    font-size: 25px;
+    }
+   .banner-texto p {
+    font-size: 20px;
+   }
+  
+  .nav-logo img {
+    width: 70px;
+    height: 70px;
+  }
+  
+ 
+}
+@media (max-width: 768px) {
+  .quiz-images {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .quiz-images img {
+    max-width: 55%;
+    max-height: 55%;
+    margin-bottom: 20px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .search {
+    display: none;
+  }
+ 
+  .header-top {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+  }
+
+  .banner video {
+    width: 100%;
+    height: 30vh;
+  }
+
+    .banner-texto  h1 {
+    font-size: 20px;
+    }
+   .banner-texto p {
+    font-size: 18px;
+    background: rgba(170, 235, 175, 0.4);
+   }
+   .navbar_toggle {
+        display: block;
+        font-size: 3rem;
+        z-index: 10;
+     }
+  .nav-logo img {
+    width: 60px;
+    height: 60px;
+  }
+  .btn-banner {
+    padding: 5px 10px;
+  }
+  .container-videos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .video-card {
+    max-width: 45%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+  .quiz-images {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cards-container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     flex-wrap: nowrap;
+  }
+
+  .nav-links {
+    display: none;
+  }
+  .search {
+    display: none;
+  }
+  .quiz-images img {
+    max-width: 45%;
+    max-height: 45%;
+    margin-bottom: 20px;
+  }
+
+  .header-top {
+    font-size: 0.5rem;
+    letter-spacing: 4px;
+  }
+
+  .banner video {
+    width: 100%;
+    height: 20vh;
+  }
+
+    .banner-texto  h1 {
+    font-size: 20px;
+    }
+   .banner-texto p {
+    font-size: 15px;
+    background: rgba(170, 235, 175, 0.4);
+   }
+   .navbar_toggle {
+        display: block;
+        font-size: 3rem;
+        z-index: 10;
+     }
+ .nav-logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+   .video-card {
+    max-width: 50%;
+  }
+}
+
+
+/* ===============================
+   Tutoriais
+   =============================== */
+
+@keyframes slide-up {
+  0% {
+       transform: translateY(50px);
+       opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
